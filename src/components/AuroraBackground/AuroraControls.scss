@@ -1,0 +1,556 @@
+// ============================================================================
+// AURORA CONTROLS STYLES
+// Floating control panel for aurora background settings
+// ============================================================================
+
+// Variables
+$glass-bg: rgba(10, 10, 26, 0.85);
+$glass-border: rgba(255, 255, 255, 0.1);
+$glass-border-hover: rgba(255, 255, 255, 0.2);
+$text-primary: #ffffff;
+$text-secondary: rgba(255, 255, 255, 0.6);
+$accent-purple: #8b5cf6;
+$accent-cyan: #06b6d4;
+$accent-pink: #ec4899;
+$accent-gradient: linear-gradient(135deg, $accent-purple, $accent-cyan);
+$shadow-glow: 0 0 30px rgba(139, 92, 246, 0.3);
+
+// Wrapper - positioned bottom-right
+.aurora-controls-wrapper {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// Toggle Button
+.aurora-toggle-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid $glass-border;
+    background: $glass-bg;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    .toggle-icon {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        border-color: $accent-purple;
+        box-shadow: $shadow-glow;
+        transform: scale(1.05);
+
+        .toggle-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+    }
+
+    &.active {
+        background: $accent-gradient;
+        border-color: transparent;
+
+        .toggle-icon {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+// Control Panel
+.aurora-controls-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 280px;
+    padding: 1.25rem;
+    background: $glass-bg;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid $glass-border;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), $shadow-glow;
+
+    // Animation
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+}
+
+// Header
+.aurora-controls-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid $glass-border;
+
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $text-primary;
+        background: $accent-gradient;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+// Header Buttons Container
+.header-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+// Theme Toggle Button
+.aurora-theme-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid $glass-border;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.dark {
+        &:hover {
+            background: rgba(255, 200, 50, 0.2);
+            border-color: rgba(255, 200, 50, 0.5);
+        }
+    }
+
+    &.light {
+        &:hover {
+            background: rgba($accent-purple, 0.2);
+            border-color: rgba($accent-purple, 0.5);
+        }
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+// Power Button
+.aurora-power-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid $glass-border;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.on {
+        background: rgba($accent-cyan, 0.2);
+        border-color: rgba($accent-cyan, 0.5);
+        box-shadow: 0 0 15px rgba($accent-cyan, 0.3);
+    }
+
+    &.off {
+        opacity: 0.6;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        border-color: $accent-cyan;
+    }
+}
+
+// Theme Buttons
+.theme-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.5rem;
+    border: 1px solid $glass-border;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    color: $text-secondary;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    .theme-icon {
+        font-size: 1rem;
+    }
+
+    .theme-label {
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: $glass-border-hover;
+        color: $text-primary;
+    }
+
+    &.active {
+        background: $accent-gradient;
+        border-color: transparent;
+        color: $text-primary;
+        box-shadow: 0 4px 15px rgba($accent-purple, 0.4);
+
+        .theme-label {
+            font-weight: 600;
+        }
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+}
+
+// Control Section
+.aurora-control-section {
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+        margin-bottom: 0.75rem;
+    }
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+.custom-badge {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    background: rgba($accent-pink, 0.2);
+    color: $accent-pink;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+// Mode Buttons (Quick Presets)
+.mode-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.mode-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.625rem 0.25rem;
+    border: 1px solid $glass-border;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    color: $text-secondary;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    .mode-icon {
+        font-size: 1.25rem;
+    }
+
+    .mode-label {
+        font-size: 0.625rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: $glass-border-hover;
+        color: $text-primary;
+        transform: translateY(-2px);
+    }
+
+    &.active {
+        background: $accent-gradient;
+        border-color: transparent;
+        color: $text-primary;
+        box-shadow: 0 4px 15px rgba($accent-purple, 0.4);
+
+        .mode-label {
+            font-weight: 600;
+        }
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+// Slider Buttons (Intensity/Speed)
+.slider-buttons {
+    display: flex;
+    gap: 0.375rem;
+}
+
+.slider-btn {
+    flex: 1;
+    padding: 0.5rem 0.25rem;
+    border: 1px solid $glass-border;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    color: $text-secondary;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.08);
+        color: $text-primary;
+    }
+
+    &.active {
+        background: rgba($accent-purple, 0.3);
+        border-color: rgba($accent-purple, 0.6);
+        color: $text-primary;
+        font-weight: 600;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+// Status Bar
+.aurora-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid $glass-border;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+
+    &.active {
+        background: $accent-cyan;
+        box-shadow: 0 0 10px rgba($accent-cyan, 0.6);
+        animation: pulse 2s ease-in-out infinite;
+    }
+}
+
+.status-text {
+    font-size: 0.75rem;
+    color: $text-secondary;
+}
+
+// Pulse Animation
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+// Responsive - Mobile
+@media screen and (max-width: 768px) {
+    .aurora-controls-wrapper {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .aurora-toggle-btn {
+        width: 48px;
+        height: 48px;
+
+        .toggle-icon {
+            font-size: 1.25rem;
+        }
+    }
+
+    .aurora-controls-panel {
+        width: 260px;
+        padding: 1rem;
+        bottom: 60px;
+    }
+
+    .mode-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+
+    .aurora-toggle-btn,
+    .aurora-controls-panel,
+    .mode-btn,
+    .slider-btn,
+    .status-indicator {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// LIGHT MODE STYLES
+// -----------------------------------------------------------------------------
+
+.light-mode,
+[data-theme="light"] {
+    .aurora-toggle-btn {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            border-color: $accent-purple;
+            box-shadow: 0 0 20px rgba($accent-purple, 0.3);
+        }
+
+        &.active {
+            background: $accent-gradient;
+        }
+    }
+
+    .aurora-controls-panel {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+
+        h3 {
+            color: #1e293b;
+        }
+    }
+
+    .aurora-controls-header {
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .section-label {
+        color: #64748b;
+    }
+
+    .aurora-theme-btn,
+    .aurora-power-btn {
+        background: rgba(0, 0, 0, 0.03);
+        border-color: rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        &.on {
+            background: rgba($accent-cyan, 0.15);
+            border-color: rgba($accent-cyan, 0.4);
+        }
+    }
+
+    .mode-btn,
+    .theme-btn {
+        background: rgba(0, 0, 0, 0.02);
+        border-color: rgba(0, 0, 0, 0.1);
+        color: #64748b;
+
+        &:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #1e293b;
+        }
+
+        &.active {
+            background: $accent-gradient;
+            color: #fff;
+        }
+    }
+
+    .slider-btn {
+        background: rgba(0, 0, 0, 0.02);
+        border-color: rgba(0, 0, 0, 0.1);
+        color: #64748b;
+
+        &:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.05);
+            color: #1e293b;
+        }
+
+        &.active {
+            background: rgba($accent-purple, 0.15);
+            border-color: rgba($accent-purple, 0.4);
+            color: $accent-purple;
+        }
+    }
+
+    .aurora-status {
+        border-top-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .status-text {
+        color: #64748b;
+    }
+
+    .status-indicator {
+        background: rgba(0, 0, 0, 0.2);
+
+        &.active {
+            background: $accent-cyan;
+        }
+    }
+
+    .custom-badge {
+        background: rgba($accent-pink, 0.1);
+    }
+}

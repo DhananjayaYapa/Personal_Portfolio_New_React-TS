@@ -1,0 +1,228 @@
+.education-page {
+    .text-zone {
+        width: 35%;
+    }
+}
+
+.education-cards {
+    width: 45%;
+    height: 100%;
+    top: 5%;
+    padding-top: 2%;
+    position: absolute;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    max-height: 85vh;
+    padding-right: 10px;
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(139, 92, 246, 0.3);
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(139, 92, 246, 0.5);
+    }
+}
+
+.education-card {
+    background: rgba(30, 30, 50, 0.8);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+        border-color: rgba(139, 92, 246, 0.6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+    }
+
+    .card-header {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .card-logo {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 5px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .card-info {
+        flex: 1;
+
+        .institution-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .degree-name {
+            font-size: 0.9rem;
+            color: #06b6d4;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .period {
+            font-size: 0.75rem;
+            color: #fff;
+            opacity: 0.9;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+    }
+
+    .card-highlight {
+        background: rgba(139, 92, 246, 0.1);
+        border-left: 3px solid #8b5cf6;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0 6px 6px 0;
+
+        .highlight-label {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .highlight-value {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+    }
+
+    .card-description {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+}
+
+// Light mode for Education
+.light-mode,
+[data-theme="light"] {
+    .education-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(139, 92, 246, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+        &:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+        }
+
+        .card-logo {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .card-info {
+            .institution-name {
+                color: #1e293b;
+            }
+
+            .degree-name {
+                color: #0891b2;
+            }
+
+            .period {
+                color: #64748b;
+            }
+        }
+
+        .card-highlight {
+            background: rgba(139, 92, 246, 0.08);
+
+            .highlight-label {
+                color: #7c3aed;
+            }
+
+            .highlight-value {
+                color: #1e293b;
+            }
+        }
+
+        .card-description {
+            color: #475569;
+        }
+    }
+
+    .education-cards {
+        &::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.4);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.6);
+        }
+    }
+}
+
+// Responsive
+@media screen and (max-width: 1200px) {
+    .education-cards {
+        position: initial;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .education-page .text-zone {
+        width: 100%;
+    }
+
+    .education-card {
+        .card-header {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-highlight {
+            text-align: center;
+            border-left: none;
+            border-top: 3px solid #8b5cf6;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .card-description {
+            text-align: center;
+        }
+    }
+}
