@@ -1,0 +1,825 @@
+// ============================================================================
+// AURORA BACKGROUND STYLES
+// A mesmerizing animated aurora-style background with flowing neon gradients
+// ============================================================================
+
+// -----------------------------------------------------------------------------
+// DESIGN TOKENS & VARIABLES
+// -----------------------------------------------------------------------------
+
+// Aurora Colors - Neon gradient palette
+$aurora-purple: #8b5cf6;
+$aurora-purple-deep: #6d28d9;
+$aurora-purple-light: #a78bfa;
+$aurora-blue: #3b82f6;
+$aurora-blue-deep: #1d4ed8;
+$aurora-cyan: #06b6d4;
+$aurora-cyan-light: #22d3ee;
+$aurora-pink: #ec4899;
+$aurora-pink-deep: #db2777;
+$aurora-magenta: #d946ef;
+
+// Background base
+$aurora-bg-dark: #0a0a1a;
+$aurora-bg-medium: #0f0f23;
+
+// Animation durations
+$aurora-duration-slow: 25s;
+$aurora-duration-medium: 15s;
+$aurora-duration-fast: 8s;
+
+// Blur intensities
+$blur-low: 60px;
+$blur-medium: 100px;
+$blur-high: 150px;
+$blur-ultra: 200px;
+
+// -----------------------------------------------------------------------------
+// KEYFRAME ANIMATIONS
+// -----------------------------------------------------------------------------
+
+// Primary Aurora Flow - Slow, elegant wave-like motion
+@keyframes auroraFlow {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg) scale(1);
+        opacity: 0.8;
+    }
+
+    25% {
+        transform: translate(10%, -15%) rotate(45deg) scale(1.1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translate(-5%, 10%) rotate(90deg) scale(0.95);
+        opacity: 0.7;
+    }
+
+    75% {
+        transform: translate(-15%, -5%) rotate(135deg) scale(1.05);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: translate(0%, 0%) rotate(180deg) scale(1);
+        opacity: 0.8;
+    }
+}
+
+// Secondary blob animation - Counter-rotating flow
+@keyframes auroraDrift {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg) scale(1);
+    }
+
+    20% {
+        transform: translate(-20%, 10%) rotate(-36deg) scale(1.15);
+    }
+
+    40% {
+        transform: translate(15%, -20%) rotate(-72deg) scale(0.9);
+    }
+
+    60% {
+        transform: translate(-10%, 15%) rotate(-108deg) scale(1.1);
+    }
+
+    80% {
+        transform: translate(20%, -10%) rotate(-144deg) scale(0.95);
+    }
+
+    100% {
+        transform: translate(0%, 0%) rotate(-180deg) scale(1);
+    }
+}
+
+// Wave animation - Horizontal flowing motion
+@keyframes auroraWave {
+    0% {
+        transform: translateX(-50%) translateY(0%) scaleX(1) scaleY(1);
+        opacity: 0.6;
+    }
+
+    25% {
+        transform: translateX(-30%) translateY(-10%) scaleX(1.2) scaleY(0.9);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(5%) scaleX(0.9) scaleY(1.1);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translateX(-70%) translateY(-5%) scaleX(1.1) scaleY(0.95);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0%) scaleX(1) scaleY(1);
+        opacity: 0.6;
+    }
+}
+
+// Glow pulse animation
+@keyframes auroraPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+// Gentle shimmer effect
+@keyframes auroraShimmer {
+    0% {
+        opacity: 0.3;
+        filter: hue-rotate(0deg);
+    }
+
+    33% {
+        opacity: 0.5;
+        filter: hue-rotate(15deg);
+    }
+
+    66% {
+        opacity: 0.4;
+        filter: hue-rotate(-10deg);
+    }
+
+    100% {
+        opacity: 0.3;
+        filter: hue-rotate(0deg);
+    }
+}
+
+// Subtle color shift
+@keyframes colorShift {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg) saturate(1);
+    }
+
+    25% {
+        filter: hue-rotate(10deg) saturate(1.1);
+    }
+
+    50% {
+        filter: hue-rotate(-5deg) saturate(0.95);
+    }
+
+    75% {
+        filter: hue-rotate(5deg) saturate(1.05);
+    }
+}
+
+// Noise animation for texture
+@keyframes noiseAnimation {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5%, -5%);
+    }
+
+    20% {
+        transform: translate(-10%, 5%);
+    }
+
+    30% {
+        transform: translate(5%, -10%);
+    }
+
+    40% {
+        transform: translate(-5%, 15%);
+    }
+
+    50% {
+        transform: translate(-10%, 5%);
+    }
+
+    60% {
+        transform: translate(15%, 0);
+    }
+
+    70% {
+        transform: translate(0, 10%);
+    }
+
+    80% {
+        transform: translate(-15%, 0);
+    }
+
+    90% {
+        transform: translate(10%, 5%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// MAIN CONTAINER
+// -----------------------------------------------------------------------------
+
+.aurora-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg,
+            $aurora-bg-dark 0%,
+            $aurora-bg-medium 50%,
+            #1a0a2e 100%); // Pre-calculated dark purple (was: darken($aurora-purple-deep, 35%))
+    pointer-events: none;
+    user-select: none;
+
+    // GPU Acceleration & Performance Optimizations
+    // Using transform3d forces GPU layer composition
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    // Contain for paint optimization
+    contain: layout style paint;
+
+    // Ensure smooth 60fps rendering
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}
+
+// Overlay mode - sits behind content
+.aurora-overlay {
+    z-index: -1;
+}
+
+// -----------------------------------------------------------------------------
+// AURORA LAYERS
+// -----------------------------------------------------------------------------
+
+.aurora-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+// Primary layer - Main aurora blobs
+.aurora-primary {
+    filter: blur($blur-medium);
+    opacity: 0.9;
+    mix-blend-mode: screen;
+}
+
+// Secondary layer - Wave elements
+.aurora-secondary {
+    filter: blur($blur-high);
+    opacity: 0.7;
+    mix-blend-mode: soft-light;
+}
+
+// Tertiary layer - Ambient glow
+.aurora-tertiary {
+    filter: blur($blur-ultra);
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+}
+
+// -----------------------------------------------------------------------------
+// AURORA BLOBS
+// -----------------------------------------------------------------------------
+
+.aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+
+    // GPU acceleration for each blob
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+
+    // Optimize compositing
+    isolation: isolate;
+}
+
+// Blob 1 - Purple/Magenta (Top-left area)
+.aurora-blob-1 {
+    width: 60vmax;
+    height: 60vmax;
+    top: -20%;
+    left: -10%;
+    background: radial-gradient(ellipse at center,
+            $aurora-purple 0%,
+            $aurora-magenta 30%,
+            transparent 70%);
+    animation-name: auroraFlow;
+    animation-duration: $aurora-duration-slow;
+}
+
+// Blob 2 - Cyan/Blue (Center-right area)
+.aurora-blob-2 {
+    width: 70vmax;
+    height: 70vmax;
+    top: 20%;
+    right: -20%;
+    background: radial-gradient(ellipse at center,
+            $aurora-cyan 0%,
+            $aurora-blue 35%,
+            transparent 70%);
+    animation-name: auroraDrift;
+    animation-duration: $aurora-duration-slow;
+    animation-delay: -8s;
+}
+
+// Blob 3 - Pink/Purple (Bottom area)
+.aurora-blob-3 {
+    width: 50vmax;
+    height: 50vmax;
+    bottom: -15%;
+    left: 30%;
+    background: radial-gradient(ellipse at center,
+            $aurora-pink 0%,
+            $aurora-purple-light 40%,
+            transparent 70%);
+    animation-name: auroraFlow;
+    animation-duration: $aurora-duration-slow;
+    animation-delay: -16s;
+}
+
+// -----------------------------------------------------------------------------
+// AURORA WAVES
+// -----------------------------------------------------------------------------
+
+.aurora-wave {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+    // GPU acceleration
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+// Wave 1 - Horizontal cyan sweep
+.aurora-wave-1 {
+    top: 10%;
+    left: 50%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba($aurora-cyan, 0.4) 25%,
+            rgba($aurora-blue, 0.5) 50%,
+            rgba($aurora-cyan-light, 0.3) 75%,
+            transparent 100%);
+    animation-name: auroraWave;
+    animation-duration: calc($aurora-duration-slow * 1.2);
+    border-radius: 40% 60% 50% 50%;
+}
+
+// Wave 2 - Mid-level purple/pink sweep
+.aurora-wave-2 {
+    top: 40%;
+    left: 50%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba($aurora-purple, 0.3) 30%,
+            rgba($aurora-pink, 0.4) 50%,
+            rgba($aurora-magenta, 0.3) 70%,
+            transparent 100%);
+    animation-name: auroraWave;
+    animation-duration: calc($aurora-duration-slow * 1.4);
+    animation-delay: -10s;
+    border-radius: 50% 40% 60% 40%;
+}
+
+// Wave 3 - Lower blue/cyan sweep
+.aurora-wave-3 {
+    top: 60%;
+    left: 50%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba($aurora-blue-deep, 0.35) 20%,
+            rgba($aurora-cyan, 0.45) 50%,
+            rgba($aurora-purple-light, 0.3) 80%,
+            transparent 100%);
+    animation-name: auroraWave;
+    animation-duration: calc($aurora-duration-slow * 1.6);
+    animation-delay: -20s;
+    border-radius: 60% 40% 45% 55%;
+}
+
+// -----------------------------------------------------------------------------
+// AURORA GLOW EFFECTS
+// -----------------------------------------------------------------------------
+
+.aurora-glow {
+    position: absolute;
+    border-radius: 50%;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+    // GPU acceleration
+    will-change: transform, opacity, filter;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+// Glow 1 - Upper ambient glow
+.aurora-glow-1 {
+    width: 80vmax;
+    height: 80vmax;
+    top: -30%;
+    left: -20%;
+    background: radial-gradient(ellipse at center,
+            rgba($aurora-purple-deep, 0.6) 0%,
+            rgba($aurora-blue-deep, 0.3) 40%,
+            transparent 70%);
+    animation-name: auroraPulse, colorShift;
+    animation-duration: calc($aurora-duration-slow * 0.8), calc($aurora-duration-slow * 2);
+}
+
+// Glow 2 - Lower ambient glow
+.aurora-glow-2 {
+    width: 90vmax;
+    height: 90vmax;
+    bottom: -40%;
+    right: -30%;
+    background: radial-gradient(ellipse at center,
+            rgba($aurora-cyan, 0.5) 0%,
+            rgba($aurora-pink-deep, 0.25) 50%,
+            transparent 70%);
+    animation-name: auroraPulse, colorShift;
+    animation-duration: calc($aurora-duration-slow * 1.2), calc($aurora-duration-slow * 1.8);
+    animation-delay: -12s, -6s;
+}
+
+// -----------------------------------------------------------------------------
+// TEXTURE & ENHANCEMENT LAYERS
+// -----------------------------------------------------------------------------
+
+// Noise texture for natural aurora feel
+.aurora-noise {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: noiseAnimation 8s steps(10) infinite;
+}
+
+// Vignette for depth
+.aurora-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center,
+            transparent 30%,
+            rgba($aurora-bg-dark, 0.4) 80%,
+            rgba($aurora-bg-dark, 0.7) 100%);
+    pointer-events: none;
+}
+
+// -----------------------------------------------------------------------------
+// INTENSITY MODIFIERS
+// -----------------------------------------------------------------------------
+
+.aurora-intensity-low {
+    .aurora-primary {
+        filter: blur($blur-high);
+        opacity: 0.5;
+    }
+
+    .aurora-secondary {
+        filter: blur($blur-ultra);
+        opacity: 0.4;
+    }
+
+    .aurora-tertiary {
+        opacity: 0.3;
+    }
+}
+
+.aurora-intensity-medium {
+    .aurora-primary {
+        filter: blur($blur-medium);
+        opacity: 0.7;
+    }
+
+    .aurora-secondary {
+        filter: blur($blur-high);
+        opacity: 0.6;
+    }
+
+    .aurora-tertiary {
+        opacity: 0.5;
+    }
+}
+
+.aurora-intensity-high {
+    .aurora-primary {
+        filter: blur($blur-low);
+        opacity: 0.85;
+    }
+
+    .aurora-secondary {
+        filter: blur($blur-medium);
+        opacity: 0.75;
+    }
+
+    .aurora-tertiary {
+        opacity: 0.65;
+    }
+}
+
+.aurora-intensity-ultra {
+    .aurora-primary {
+        filter: blur(40px);
+        opacity: 0.95;
+    }
+
+    .aurora-secondary {
+        filter: blur($blur-low);
+        opacity: 0.85;
+    }
+
+    .aurora-tertiary {
+        filter: blur($blur-medium);
+        opacity: 0.75;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// SPEED MODIFIERS
+// -----------------------------------------------------------------------------
+
+.aurora-speed-slow {
+    .aurora-blob-1 {
+        animation-duration: $aurora-duration-slow;
+    }
+
+    .aurora-blob-2 {
+        animation-duration: $aurora-duration-slow;
+    }
+
+    .aurora-blob-3 {
+        animation-duration: $aurora-duration-slow;
+    }
+
+    .aurora-wave-1 {
+        animation-duration: calc($aurora-duration-slow * 1.2);
+    }
+
+    .aurora-wave-2 {
+        animation-duration: calc($aurora-duration-slow * 1.4);
+    }
+
+    .aurora-wave-3 {
+        animation-duration: calc($aurora-duration-slow * 1.6);
+    }
+
+    .aurora-glow-1 {
+        animation-duration: calc($aurora-duration-slow * 0.8), calc($aurora-duration-slow * 2);
+    }
+
+    .aurora-glow-2 {
+        animation-duration: calc($aurora-duration-slow * 1.2), calc($aurora-duration-slow * 1.8);
+    }
+}
+
+.aurora-speed-medium {
+    .aurora-blob-1 {
+        animation-duration: $aurora-duration-medium;
+    }
+
+    .aurora-blob-2 {
+        animation-duration: $aurora-duration-medium;
+    }
+
+    .aurora-blob-3 {
+        animation-duration: $aurora-duration-medium;
+    }
+
+    .aurora-wave-1 {
+        animation-duration: calc($aurora-duration-medium * 1.2);
+    }
+
+    .aurora-wave-2 {
+        animation-duration: calc($aurora-duration-medium * 1.4);
+    }
+
+    .aurora-wave-3 {
+        animation-duration: calc($aurora-duration-medium * 1.6);
+    }
+
+    .aurora-glow-1 {
+        animation-duration: calc($aurora-duration-medium * 0.8), calc($aurora-duration-medium * 2);
+    }
+
+    .aurora-glow-2 {
+        animation-duration: calc($aurora-duration-medium * 1.2), calc($aurora-duration-medium * 1.8);
+    }
+}
+
+.aurora-speed-fast {
+    .aurora-blob-1 {
+        animation-duration: $aurora-duration-fast;
+    }
+
+    .aurora-blob-2 {
+        animation-duration: $aurora-duration-fast;
+    }
+
+    .aurora-blob-3 {
+        animation-duration: $aurora-duration-fast;
+    }
+
+    .aurora-wave-1 {
+        animation-duration: calc($aurora-duration-fast * 1.2);
+    }
+
+    .aurora-wave-2 {
+        animation-duration: calc($aurora-duration-fast * 1.4);
+    }
+
+    .aurora-wave-3 {
+        animation-duration: calc($aurora-duration-fast * 1.6);
+    }
+
+    .aurora-glow-1 {
+        animation-duration: calc($aurora-duration-fast * 0.8), calc($aurora-duration-fast * 2);
+    }
+
+    .aurora-glow-2 {
+        animation-duration: calc($aurora-duration-fast * 1.2), calc($aurora-duration-fast * 1.8);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// RESPONSIVE ADJUSTMENTS
+// -----------------------------------------------------------------------------
+
+@media screen and (max-width: 768px) {
+    .aurora-blob-1 {
+        width: 80vmax;
+        height: 80vmax;
+    }
+
+    .aurora-blob-2 {
+        width: 90vmax;
+        height: 90vmax;
+    }
+
+    .aurora-blob-3 {
+        width: 70vmax;
+        height: 70vmax;
+    }
+
+    // Increase blur on mobile for smoother appearance
+    .aurora-primary {
+        filter: blur($blur-high);
+    }
+
+    .aurora-secondary {
+        filter: blur($blur-ultra);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// REDUCED MOTION ACCESSIBILITY
+// -----------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+
+    .aurora-blob,
+    .aurora-wave,
+    .aurora-glow,
+    .aurora-noise {
+        animation: none !important;
+    }
+
+    // Provide a static gradient fallback
+    .aurora-background {
+        // Using rgba calculations instead of deprecated mix()
+        background: linear-gradient(135deg,
+                $aurora-bg-dark 0%,
+                rgba($aurora-purple-deep, 0.3) 25%,
+                rgba($aurora-blue-deep, 0.25) 50%,
+                rgba($aurora-cyan, 0.2) 75%,
+                $aurora-bg-medium 100%);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// PRINT STYLES
+// -----------------------------------------------------------------------------
+
+@media print {
+    .aurora-background {
+        display: none;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// LIGHT MODE STYLES
+// -----------------------------------------------------------------------------
+
+.light-mode,
+[data-theme="light"] {
+    .aurora-background {
+        // Lighter base gradient for light mode
+        background: linear-gradient(135deg,
+                rgba(248, 250, 252, 0.95) 0%,
+                rgba(241, 245, 249, 0.9) 50%,
+                rgba(226, 232, 240, 0.85) 100%);
+    }
+
+    // Reduce overall aurora opacity in light mode
+    .aurora-primary {
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+    }
+
+    .aurora-secondary {
+        opacity: 0.4;
+        mix-blend-mode: overlay;
+    }
+
+    .aurora-tertiary {
+        opacity: 0.3;
+        mix-blend-mode: soft-light;
+    }
+
+    // Adjust blob colors for light mode - more pastel/vibrant
+    .aurora-blob-1 {
+        background: radial-gradient(ellipse at center,
+                rgba($aurora-purple, 0.6) 0%,
+                rgba($aurora-magenta, 0.4) 30%,
+                transparent 70%);
+    }
+
+    .aurora-blob-2 {
+        background: radial-gradient(ellipse at center,
+                rgba($aurora-cyan, 0.5) 0%,
+                rgba($aurora-blue, 0.4) 35%,
+                transparent 70%);
+    }
+
+    .aurora-blob-3 {
+        background: radial-gradient(ellipse at center,
+                rgba($aurora-pink, 0.5) 0%,
+                rgba($aurora-purple-light, 0.4) 40%,
+                transparent 70%);
+    }
+
+    // Lighter glow effects
+    .aurora-glow-1 {
+        background: radial-gradient(ellipse at center,
+                rgba($aurora-purple, 0.3) 0%,
+                rgba($aurora-blue, 0.15) 40%,
+                transparent 70%);
+    }
+
+    .aurora-glow-2 {
+        background: radial-gradient(ellipse at center,
+                rgba($aurora-cyan, 0.25) 0%,
+                rgba($aurora-pink, 0.15) 50%,
+                transparent 70%);
+    }
+
+    // Lighter vignette
+    .aurora-vignette {
+        background: radial-gradient(ellipse at center,
+                transparent 40%,
+                rgba(248, 250, 252, 0.3) 80%,
+                rgba(241, 245, 249, 0.5) 100%);
+    }
+
+    // Reduce noise visibility in light mode
+    .aurora-noise {
+        opacity: 0.015;
+    }
+}
