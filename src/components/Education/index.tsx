@@ -31,7 +31,7 @@ const Education: React.FC = () => {
             period: '2021 - 2025',
             highlightLabel: 'Grade:',
             highlight: '3.15 CGPA',
-            description: 'Recently completed degree with strong emphasis on software development, full-stack application design, AI development, and modern engineering practices. Gained practical experience in building web applications, collaborating in teams, and applying problem-solving skills to real-world projects.',
+            description: 'Recently Graduated with Bachelor of Science (Hons) in Information Technology specializing in Software Engineering with strong emphasis on software development, full-stack application design, AI development, and modern engineering practices. Gained practical experience in building web applications, collaborating in teams, and applying problem-solving skills to real-world projects.',
         },
         {
             logo: logo3,

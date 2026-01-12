@@ -1,5 +1,33 @@
+/* Base box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1em;
+  background-color: rgba(50, 50, 50, 0.3);
+}
+
 html {
   font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -12,6 +40,11 @@ body {
   overflow: hidden;
   display: block;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
 }
 
 /* Light mode body background override */
@@ -29,8 +62,38 @@ body.dark-mode {
   margin-left: 200px;
 }
 
+/* Responsive breakpoints */
 @media screen and (max-width: 1200px) {
   body {
     overflow: visible;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  html {
+    font-size: 50%;
+  }
+
+  .dashboard {
+    margin-top: 100px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  html {
+    font-size: 45%;
   }
 }

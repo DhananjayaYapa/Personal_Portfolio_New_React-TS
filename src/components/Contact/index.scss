@@ -128,15 +128,165 @@
     }
 }
 
+// =============================================================================
+// RESPONSIVE STYLES - Multi-breakpoint approach
+// =============================================================================
+
+// 1200px - Tablet Landscape
 @media screen and (max-width: 1200px) {
     .map-wrap {
         float: none;
-        margin: 0;
+        margin: 30px 0 0;
         width: 100%;
         height: 400px;
     }
 
     .info-map {
         display: none;
+    }
+
+    .contact-form {
+        ul li.half {
+            width: 100%;
+            margin-left: 0;
+            float: none;
+        }
+    }
+}
+
+// 1024px - Tablet Portrait
+@media screen and (max-width: 1024px) {
+    .map-wrap {
+        height: 350px;
+        margin-top: 25px;
+    }
+
+    .contact-form {
+
+        input[type='text'],
+        input[type='email'] {
+            height: 45px;
+            font-size: 15px;
+            padding: 0 15px;
+        }
+
+        textarea {
+            font-size: 15px;
+            padding: 15px;
+            min-height: 130px;
+        }
+
+        .flat-button {
+            padding: 7px 9px;
+            font-size: 10px;
+        }
+    }
+}
+
+// 768px - Mobile Landscape
+@media screen and (max-width: 768px) {
+    .map-wrap {
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .contact-form {
+        margin-top: 15px;
+
+        input[type='text'],
+        input[type='email'] {
+            height: 42px;
+            font-size: 14px;
+            padding: 0 12px;
+        }
+
+        textarea {
+            font-size: 14px;
+            padding: 12px;
+            min-height: 120px;
+        }
+
+        .flat-button {
+            float: none;
+            display: block;
+            width: 100%;
+            margin: 10px 0 0;
+            padding: 10px;
+            text-align: center;
+        }
+    }
+}
+
+// 540px - Mobile Portrait
+@media screen and (max-width: 540px) {
+    .map-wrap {
+        height: 250px;
+        margin-top: 15px;
+    }
+
+    .contact-form {
+        margin-top: 12px;
+
+        ul {
+            li {
+                margin-bottom: 8px;
+            }
+        }
+
+        input[type='text'],
+        input[type='email'] {
+            height: 40px;
+            font-size: 13px;
+            padding: 0 10px;
+        }
+
+        textarea {
+            font-size: 13px;
+            padding: 10px;
+            min-height: 100px;
+        }
+
+        .flat-button {
+            padding: 8px;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+    }
+}
+
+// 360px - Extra Small Mobile
+@media screen and (max-width: 360px) {
+    .map-wrap {
+        height: 200px;
+        margin-top: 12px;
+    }
+
+    .contact-form {
+        margin-top: 10px;
+
+        ul {
+            li {
+                margin-bottom: 6px;
+            }
+        }
+
+        input[type='text'],
+        input[type='email'] {
+            height: 38px;
+            font-size: 12px;
+            padding: 0 8px;
+        }
+
+        textarea {
+            font-size: 12px;
+            padding: 8px;
+            min-height: 80px;
+        }
+
+        .flat-button {
+            padding: 7px;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
     }
 }

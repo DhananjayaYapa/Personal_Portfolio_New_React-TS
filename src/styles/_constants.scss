@@ -1,0 +1,74 @@
+// ============================================================================
+// CONSTANTS - Responsive Breakpoints & Mixins
+// Based on suggestDesign patterns for consistent responsive design
+// ============================================================================
+
+// Primary Font
+$primaryFont: 'Helvetica Neue', 'Coolvetica', sans-serif;
+$primaryFontSize: 14px;
+
+// Screen size breakpoints (matching suggestDesign)
+$xxl: 1440px; // Extra Extra Large
+$xl: 1280px; // Extra Large
+$l: 1024px; // Landscape/Tablet
+$m: 768px; // Medium/Tablet Portrait
+$s: 540px; // Small/Mobile
+$xxs: 360px; // Extra Extra Small
+
+// Transition mixin for consistent animations
+@mixin transition($val) {
+    transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+    -webkit-transition: $val;
+}
+
+// Media query mixins for easier responsive styling
+@mixin xxl-down {
+    @media all and (max-width: $xxl) {
+        @content;
+    }
+}
+
+@mixin xl-down {
+    @media all and (max-width: $xl) {
+        @content;
+    }
+}
+
+@mixin l-down {
+    @media all and (max-width: $l) {
+        @content;
+    }
+}
+
+@mixin m-down {
+    @media all and (max-width: $m) {
+        @content;
+    }
+}
+
+@mixin s-down {
+    @media all and (max-width: $s) {
+        @content;
+    }
+}
+
+@mixin xxs-down {
+    @media all and (max-width: $xxs) {
+        @content;
+    }
+}
+
+// Flexbox centering mixin
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Flex column mixin
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}

@@ -116,6 +116,12 @@
             }
         }
 
+        a.Awards-link {
+            &:after {
+                content: 'AWARDS';
+            }
+        }
+
         a.active {
             svg {
                 color: var(--sidebar-icon-active);
@@ -157,10 +163,16 @@
 }
 
 
+// =============================================================================
+// RESPONSIVE STYLES - Multi-breakpoint approach
+// =============================================================================
+
+// 1200px - Tablet Landscape (original breakpoint)
 @media screen and (max-width: 1200px) {
     .nav-bar {
         background: transparent;
         position: initial;
+        height: auto;
         min-height: auto;
 
         ul,
@@ -172,11 +184,12 @@
             width: 100%;
             top: 0;
             left: 0;
-            background: #181818;
+            background: var(--sidebar-bg, #181818);
             height: 100%;
             margin: 0;
             z-index: 2;
             position: fixed;
+            padding: 80px 20px 20px;
 
             &.mobile-show {
                 display: block;
@@ -186,13 +199,18 @@
                 display: flex;
                 justify-content: start;
                 align-items: center;
+                font-size: 20px;
+                padding: 15px 10px;
+                border-bottom: 1px solid var(--border-primary);
             }
 
             a:after {
                 opacity: 1;
                 position: initial;
                 width: auto;
-                margin-left: 10PX;
+                margin-left: 15px;
+                font-size: 14px;
+                letter-spacing: 2px;
             }
 
             a svg {
@@ -202,10 +220,123 @@
 
         .hamburger-icon,
         .close-icon {
-            position: absolute;
+            position: fixed;
             top: 15px;
             right: 15px;
             display: block;
+            z-index: 1000;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: var(--color-primary);
+            }
+        }
+    }
+}
+
+// 1024px - Tablet Portrait
+@media screen and (max-width: 1024px) {
+    .nav-bar {
+        nav {
+            a {
+                font-size: 18px;
+                padding: 12px 10px;
+            }
+
+            a:after {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+// 768px - Mobile Landscape
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        nav {
+            padding: 70px 15px 15px;
+
+            a {
+                font-size: 16px;
+                padding: 10px 8px;
+            }
+
+            a:after {
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+        }
+
+        .hamburger-icon,
+        .close-icon {
+            top: 12px;
+            right: 12px;
+            font-size: 26px;
+        }
+    }
+}
+
+// 540px - Mobile Portrait
+@media screen and (max-width: 540px) {
+    .nav-bar {
+        nav {
+            padding: 60px 10px 10px;
+
+            a {
+                font-size: 14px;
+                padding: 8px 6px;
+                line-height: 40px;
+                height: auto;
+            }
+
+            a svg {
+                font-size: 18px;
+            }
+
+            a:after {
+                font-size: 11px;
+                margin-left: 10px;
+            }
+        }
+
+        .hamburger-icon,
+        .close-icon {
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+    }
+}
+
+// 360px - Extra Small Mobile
+@media screen and (max-width: 360px) {
+    .nav-bar {
+        nav {
+            padding: 55px 8px 8px;
+
+            a {
+                font-size: 13px;
+                padding: 6px 5px;
+            }
+
+            a svg {
+                font-size: 16px;
+            }
+
+            a:after {
+                font-size: 10px;
+                margin-left: 8px;
+            }
+        }
+
+        .hamburger-icon,
+        .close-icon {
+            top: 8px;
+            right: 8px;
+            font-size: 22px;
         }
     }
 }

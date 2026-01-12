@@ -90,3 +90,202 @@
         transform: rotateX(90deg);
     }
 }
+
+// =============================================================================
+// RESPONSIVE STYLES - Multi-breakpoint approach
+// =============================================================================
+
+// 1200px - Tablet Landscape
+@media screen and (max-width: 1200px) {
+    .stage-cube-cont {
+        position: initial;
+        width: 100%;
+        height: auto;
+        padding: 50px 0;
+        margin-top: 30px;
+        margin-bottom: 120px;
+        overflow: visible;
+    }
+
+    .cubespinner {
+        margin-left: calc(50% - 100px);
+    }
+}
+
+// 1024px - Tablet Portrait
+@media screen and (max-width: 1024px) {
+    .stage-cube-cont {
+        padding: 40px 0;
+        margin-top: 25px;
+        margin-bottom: 110px;
+    }
+
+    .cubespinner {
+        transform-origin: 80px 80px 0;
+        margin-left: calc(50% - 80px);
+
+        div {
+            width: 160px;
+            height: 160px;
+            font-size: 80px;
+        }
+
+        .face1 {
+            transform: translateZ(80px);
+        }
+
+        .face2 {
+            transform: rotateY(90deg) translateZ(80px);
+        }
+
+        .face3 {
+            transform: rotateY(90deg) rotateX(90deg) translateZ(80px);
+        }
+
+        .face4 {
+            transform: rotateY(180deg) rotateZ(90deg) translateZ(80px);
+        }
+
+        .face5 {
+            transform: rotateY(-90deg) rotateZ(90deg) translateZ(80px);
+        }
+
+        .face6 {
+            transform: rotateX(-90deg) translateZ(80px);
+        }
+    }
+}
+
+// 768px - Mobile Landscape
+@media screen and (max-width: 768px) {
+    .stage-cube-cont {
+        padding: 30px 0;
+        margin-top: 20px;
+        margin-bottom: 100px;
+    }
+
+    .cubespinner {
+        transform-origin: 60px 60px 0;
+        margin-left: calc(50% - 60px);
+
+        div {
+            width: 120px;
+            height: 120px;
+            font-size: 60px;
+        }
+
+        .face1 {
+            transform: translateZ(60px);
+        }
+
+        .face2 {
+            transform: rotateY(90deg) translateZ(60px);
+        }
+
+        .face3 {
+            transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
+        }
+
+        .face4 {
+            transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
+        }
+
+        .face5 {
+            transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
+        }
+
+        .face6 {
+            transform: rotateX(-90deg) translateZ(60px);
+        }
+    }
+}
+
+// 540px - Mobile Portrait
+@media screen and (max-width: 540px) {
+    .stage-cube-cont {
+        padding: 25px 0;
+        margin-top: 15px;
+        margin-bottom: 90px;
+    }
+
+    .cubespinner {
+        transform-origin: 50px 50px 0;
+        margin-left: calc(50% - 50px);
+
+        div {
+            width: 100px;
+            height: 100px;
+            font-size: 50px;
+            box-shadow: 0 0 10px 0px lightyellow;
+        }
+
+        .face1 {
+            transform: translateZ(50px);
+        }
+
+        .face2 {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .face3 {
+            transform: rotateY(90deg) rotateX(90deg) translateZ(50px);
+        }
+
+        .face4 {
+            transform: rotateY(180deg) rotateZ(90deg) translateZ(50px);
+        }
+
+        .face5 {
+            transform: rotateY(-90deg) rotateZ(90deg) translateZ(50px);
+        }
+
+        .face6 {
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+    }
+}
+
+// 360px - Extra Small Mobile
+@media screen and (max-width: 360px) {
+    .stage-cube-cont {
+        padding: 20px 0;
+        margin-top: 10px;
+        margin-bottom: 80px;
+    }
+
+    .cubespinner {
+        transform-origin: 40px 40px 0;
+        margin-left: calc(50% - 40px);
+
+        div {
+            width: 80px;
+            height: 80px;
+            font-size: 40px;
+            box-shadow: 0 0 8px 0px lightyellow;
+        }
+
+        .face1 {
+            transform: translateZ(40px);
+        }
+
+        .face2 {
+            transform: rotateY(90deg) translateZ(40px);
+        }
+
+        .face3 {
+            transform: rotateY(90deg) rotateX(90deg) translateZ(40px);
+        }
+
+        .face4 {
+            transform: rotateY(180deg) rotateZ(90deg) translateZ(40px);
+        }
+
+        .face5 {
+            transform: rotateY(-90deg) rotateZ(90deg) translateZ(40px);
+        }
+
+        .face6 {
+            transform: rotateX(-90deg) translateZ(40px);
+        }
+    }
+}
