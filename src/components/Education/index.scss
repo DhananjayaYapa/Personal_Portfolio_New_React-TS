@@ -126,10 +126,11 @@
     }
 
     .card-description {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
+        font-size: 1.2rem;
+        color: #8d8d8d !important;
         line-height: 1.6;
         margin: 0;
+        font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     }
 }
 
@@ -177,7 +178,7 @@
         }
 
         .card-description {
-            color: #475569;
+            color: #475569 !important;
         }
     }
 
@@ -192,7 +193,11 @@
     }
 }
 
-// Responsive
+// =============================================================================
+// RESPONSIVE STYLES - Multi-breakpoint approach
+// =============================================================================
+
+// 1200px - Tablet Landscape
 @media screen and (max-width: 1200px) {
     .education-cards {
         position: initial;
@@ -223,6 +228,187 @@
 
         .card-description {
             text-align: center;
+        }
+    }
+}
+
+// 1024px - Tablet Portrait
+@media screen and (max-width: 1024px) {
+    .education-card {
+        padding: 1rem;
+
+        .card-header {
+            margin-bottom: 0.85rem;
+        }
+
+        .card-logo {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+        }
+
+        .card-info {
+            .institution-name {
+                font-size: 1rem;
+            }
+
+            .degree-name {
+                font-size: 0.85rem;
+            }
+
+            .period {
+                font-size: 0.7rem;
+            }
+        }
+
+        .card-highlight {
+            padding: 0.65rem 0.85rem;
+        }
+
+        .card-description {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+// 768px - Mobile Landscape
+@media screen and (max-width: 768px) {
+    .education-cards {
+        padding: 8px;
+        gap: 1rem;
+    }
+
+    .education-card {
+        padding: 1rem;
+
+        .card-logo {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+        }
+
+        .card-info {
+            .institution-name {
+                font-size: 0.95rem;
+            }
+        }
+
+        .card-highlight {
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 0.75rem;
+
+            .highlight-label,
+            .highlight-value {
+                font-size: 0.8rem;
+            }
+        }
+
+        .card-description {
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+// 540px - Mobile Portrait
+@media screen and (max-width: 540px) {
+    .education-cards {
+        padding: 5px;
+        gap: 0.75rem;
+    }
+
+    .education-card {
+        padding: 0.85rem;
+
+        .card-header {
+            gap: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-logo {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+        }
+
+        .card-info {
+            .institution-name {
+                font-size: 0.9rem;
+            }
+
+            .degree-name {
+                font-size: 0.8rem;
+            }
+
+            .period {
+                font-size: 0.65rem;
+            }
+        }
+
+        .card-highlight {
+            padding: 0.4rem 0.6rem;
+
+            .highlight-label {
+                font-size: 0.75rem;
+            }
+
+            .highlight-value {
+                font-size: 0.75rem;
+            }
+        }
+
+        .card-description {
+            font-size: 0.7rem;
+        }
+    }
+}
+
+// 360px - Extra Small Mobile
+@media screen and (max-width: 360px) {
+    .education-cards {
+        padding: 3px;
+        gap: 0.5rem;
+    }
+
+    .education-card {
+        padding: 0.75rem;
+
+        .card-header {
+            gap: 0.5rem;
+        }
+
+        .card-logo {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+        }
+
+        .card-info {
+            .institution-name {
+                font-size: 0.85rem;
+            }
+
+            .degree-name {
+                font-size: 0.75rem;
+            }
+
+            .period {
+                font-size: 0.6rem;
+            }
+        }
+
+        .card-highlight {
+            padding: 0.35rem 0.5rem;
+
+            .highlight-label,
+            .highlight-value {
+                font-size: 0.7rem;
+            }
+        }
+
+        .card-description {
+            font-size: 0.65rem;
+            line-height: 1.4;
         }
     }
 }
