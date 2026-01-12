@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
                         />
                     </h1>
                     <p>
-                        I am interested in Software Engineering Intern opportunities - especially on ambitious
+                        I am interested in Associate Software Engineer, Software Engineer, Frontend Developer, Backend Developer, AI/ML Engineer opportunities - especially on ambitious
                         or collaborating with cross-functional teams to deliver cutting-edge products.. However, if you have any other requests or
                         questions, don't hesitate to contact me using below form either.
                     </p>

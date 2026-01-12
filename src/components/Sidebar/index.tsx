@@ -76,6 +76,13 @@ const Sidebar: React.FC = () => {
                 >
                     <FontAwesomeIcon icon={faBook} color="#4d4d4e" />
                 </NavLink>
+                {/* <NavLink
+                    className={({ isActive }) => `Awards-link ${isActive ? 'active' : ''}`}
+                    to="/Awards_Certifications"
+                    onClick={() => setShowNav(false)}
+                >
+                    <FontAwesomeIcon icon={faTrophy} color="#4d4d4e" />
+                </NavLink> */}
                 <NavLink
                     className={({ isActive }) => `contact-link ${isActive ? 'active' : ''}`}
                     to="/contact"
@@ -83,17 +90,11 @@ const Sidebar: React.FC = () => {
                 >
                     <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
                 </NavLink>
-                <FontAwesomeIcon
-                    onClick={() => setShowNav(false)}
-                    icon={faClose}
-                    color="#ffd700"
-                    size="3x"
-                    className='close-icon' />
             </nav>
             <ul>
                 <li>
                     <a
-                        href="https://www.linkedin.com/in/dhananjaya-yapa-16b14221a/"
+                        href="https://www.linkedin.com/in/dhananjaya-yapa/"
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -106,7 +107,7 @@ const Sidebar: React.FC = () => {
                 </li>
                 <li>
                     <a
-                        href="https://github.com/IT21185052"
+                        href="https://github.com/DhananjayaYapa"
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -131,7 +132,7 @@ const Sidebar: React.FC = () => {
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/mr_yapa/">
+                    <a href="https://www.instagram.com/d._yapa._/">
                         <FontAwesomeIcon
                             icon={faInstagram}
                             color="#4d4d4e"
@@ -141,11 +142,11 @@ const Sidebar: React.FC = () => {
                 </li>
             </ul>
             <FontAwesomeIcon
-                onClick={() => setShowNav(true)}
-                icon={faBars}
+                onClick={() => setShowNav(!showNav)}
+                icon={showNav ? faClose : faBars}
                 color="#ffd700"
                 size="3x"
-                className='hamburger-icon' />
+                className={showNav ? 'close-icon' : 'hamburger-icon'} />
         </div>
     );
 };
