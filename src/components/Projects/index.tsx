@@ -9,7 +9,7 @@ import project2 from "../../assets/images/project-2.png";
 import project3 from "../../assets/images/project-3.png";
 import project4 from "../../assets/images/project-4.jpg";
 import project5 from "../../assets/images/project-5.jpg";
-import project6 from "../../assets/images/project-6.png";
+import project6 from "../../assets/images/project-6.jpg";
 import project7 from "../../assets/images/project-7.jfif";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -35,26 +35,22 @@ const Projects: React.FC = () => {
     {
       img: project5,
       name: "HRM System",
-      description:
-        "#ReactJS #Redux #Material-UI #TypeScript",
+      description: "#ReactJS #Redux #Material-UI #TypeScript",
       github_link:
         "https://github.com/DhananjayaYapa/Hera_React-TS_WebApp-Olympus-",
     },
     {
       img: project6,
       name: "Admin Portal HRM System",
-      description:
-        "#ReactJS #Redux #Material-UI #TypeScript",
+      description: "#ReactJS #Redux #Material-UI #TypeScript",
       github_link:
         "https://github.com/DhananjayaYapa/Admin_React-Redux-TS_WebApp-Olympus",
     },
     {
       img: project7,
       name: "Tea Supply Chain Management System",
-      description:
-        "#NextJS #Redux #Material-UI #TypeScript",
-      github_link:
-        "https://github.com/DhananjayaYapa/BrewOne-NextJS-TS_WebApp",
+      description: "#NextJS #Redux #Material-UI #TypeScript",
+      github_link: "https://github.com/DhananjayaYapa/BrewOne-NextJS-TS_WebApp",
     },
     {
       img: project1,
@@ -156,7 +152,7 @@ const Projects: React.FC = () => {
                         className="rounded-lg"
                       />
                     </div>
-                    <h3 >{project_info.name}</h3>
+                    <h3>{project_info.name}</h3>
                     <div className="links">
                       <a
                         href={project_info.github_link}
