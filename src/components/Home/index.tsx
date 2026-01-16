@@ -98,7 +98,7 @@ const Home: React.FC = () => {
                     <Link to="/contact" className="flat-button">
                         CONTACT ME
                     </Link>
-                    <a href="Dhananjaya Yapa Associate Software Engineer Resume.pdf" download="Dhananjaya Yapa Associate Software Engineer Resume.pdf">
+                    <a href="Dhananjaya Yapa Software Engineer Resume.pdf" download="Dhananjaya Yapa Software Engineer Resume.pdf">
                         <button className="btn-primary">
                             DOWNLOAD CV
                         </button>
