@@ -1,6 +1,6 @@
 .home-page {
     // Prevent horizontal scroll caused by sliding text animation
-    overflow-x: hidden;
+    overflow-x: auto;
 
     .slidingTextContainer {
         position: absolute;
