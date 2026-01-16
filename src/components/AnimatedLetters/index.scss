@@ -41,3 +41,20 @@ h1>span:has(.text-animate-hover) {
         color: #7c3aed; // Purple-blue for light mode
     }
 }
+
+// Mobile overrides - reduce min-width to prevent overflow
+@media screen and (max-width: 540px) {
+
+    .text-animate,
+    .text-animate-hover {
+        min-width: 6px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    .text-animate,
+    .text-animate-hover {
+        min-width: 4px;
+    }
+}
