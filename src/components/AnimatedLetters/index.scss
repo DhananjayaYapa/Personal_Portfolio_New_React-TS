@@ -1,5 +1,12 @@
 @use 'sass:math';
 
+// The parent span wrapping all animated letters - prevents breaking between letters
+h1>span:has(.text-animate),
+h1>span:has(.text-animate-hover) {
+    white-space: nowrap;
+    display: inline-block;
+}
+
 .text-animate {
     display: inline-block;
     opacity: 0;
