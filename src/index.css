@@ -78,6 +78,11 @@ body.dark-mode {
 @media screen and (max-width: 768px) {
   html {
     font-size: 55%;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 }
 
