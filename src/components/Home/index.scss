@@ -158,14 +158,21 @@
             position: initial;
             width: 100%;
             transform: none;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
             text-align: center;
 
             h1 {
-                white-space: nowrap;
-                word-break: keep-all;
-                overflow-wrap: normal;
+                white-space: normal;
+                text-align: center;
+
+                // Ensure each animated letter span stays together with its neighbors
+                // This prevents breaking in the middle of words like "Engineer"
+                .text-animate,
+                .text-animate-hover {
+                    display: inline;
+                    word-break: keep-all;
+                }
 
                 &:before,
                 &:after {
@@ -284,12 +291,12 @@
         }
 
         h1 {
-            font-size: 28px;
-            line-height: 32px;
+            font-size: 22px;
+            line-height: 26px;
 
             img {
-                width: 20px;
-                margin-left: 6px;
+                width: 16px;
+                margin-left: 4px;
             }
         }
 
@@ -321,12 +328,12 @@
         }
 
         h1 {
-            font-size: 22px;
-            line-height: 26px;
+            font-size: 18px;
+            line-height: 22px;
 
             img {
-                width: 16px;
-                margin-left: 4px;
+                width: 14px;
+                margin-left: 3px;
             }
         }
 
