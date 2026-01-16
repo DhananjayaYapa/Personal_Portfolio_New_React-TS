@@ -37,7 +37,7 @@ const Home: React.FC = () => {
         'a',
         'c',
         'k',
-        ' ',
+        '\u00A0', // Non-breaking space
         'S',
         'o',
         'f',
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
         'a',
         'r',
         'e',
-        ' ',
+        '\u00A0', // Non-breaking space
         'E',
         'n',
         'g',
